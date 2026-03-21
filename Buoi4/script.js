@@ -111,7 +111,7 @@
     Độ phức tạp của 1 thuật toán BIG-O
  */
 
-const a = [1, 2, 3, 4, 5, 6] // [2, 4]
+// const a = [1, 2, 3, 4, 5, 6] // [2, 4]
 
 // a.shift()
 
@@ -138,9 +138,9 @@ const a = [1, 2, 3, 4, 5, 6] // [2, 4]
 //     return pre + cur
 // }, 0)
 
-const sum = a.reduce(function (acc, cur) {
-    return [...acc, cur + 1]
-}, [])
+// const sum = a.reduce(function (acc, cur) {
+//     return [...acc, cur + 1]
+// }, [])
 
 // console.log(sum)
 
@@ -156,4 +156,42 @@ const sum = a.reduce(function (acc, cur) {
 
 // console.log(a == b)
 
-console.log(sum)
+// console.log(sum)
+
+// const carts = [
+//     { id: 1, name: "Iphone 15", price: 2000, qty: 1 },
+//     { id: 2, name: "Op lung", price: 100, qty: 5 },
+// ]
+
+// // Yêu cầu 1
+// carts.push({ id: 3, name: "Cu sac", price: 500, qty: 5 })
+
+// // Yêu cầu 2
+// const productId1 = carts.find(function (item) {
+//     return item.id === 1
+// })
+
+// productId1.qty = 2
+
+// console.log(carts)
+
+// // Yêu cầu 3
+// const totalPrice = carts.reduce(function (preValue, curValue) {
+//     return preValue + (curValue.price * curValue.qty)
+// }, 0)
+
+// console.log(totalPrice)
+
+// Bai 5
+
+// Math.random() * 4 // 0 -> 4
+
+// let gifts = ["Thẻ cào 10k", "Thẻ cào 20k", "Thẻ cào 50k", "Chúc may mắn lần sau", "Xe máy SH"];
+
+// const indexRandom = Math.floor(Math.random() * gifts.length)
+
+// const mes = "Xin chúc mừng!Bạn đã quay vào ô " + gifts[indexRandom]
+
+// console.log("Index: ", indexRandom)
+// console.log(mes)
+// console.log("==============")
