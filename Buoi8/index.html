@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buổi 8: DOM</title>
+
+    <!-- <style>
+        /* div a:nth-of-type(4) {
+            color: red;
+        } */
+    </style> -->
+</head>
+
+<!-- 
+    DOM: (Document Object Modal): là một cấu trúc dữ liệu dạng cây do trình duyệt tạo ra từ HTML
+    Mỗi thẻ HTML được chuyển thành 1 object trong bộ bộ của trình duyệt để Javascript có thể thao tác được
+
+    Cách hoạt động:
+     - Trình duyệt đọc file HTML
+     - Phân tích HTML
+     - Tạo DOM Tree trong memory
+     - Javacsript truy cập và thay đổi DOM
+     - Trình duyệt render lại giao diện
+
+     Mẫu DOM của thẻ h1
+    {
+        tag: "h1",
+        id: "title",
+        innerText: "Hello front-end"
+    }
+
+    Document:
+        - là 1 object dại diện diện cho toàn trang web của mình
+        - là điểm bắt dầu để truy cập đến cây DOM
+
+    Element: 
+        - là object đại diện cho 1 thẻ HTML cụ thể
+
+    Node:
+        - Đơn vị cơ bản của DOM
+        Các loại node
+            + Element node -> h1
+            + Text node -> "Hello"
+            + Attribute node -> id="title"
+
+    DOM Tree: 
+        Cấu trúc phân cấp dạng cây của HTML
+
+        node cha (parent) -> div
+        node con (child) -> h1, a
+
+    * Truy xuất element
+        - lấy element từ DOM dể thao tác
+        - JS tìm element theo 3 phần:
+            + id -> chỉ lấy 1
+            + class -> lấy toàn bộ
+            + tag -> 
+
+    Cú pháp:
+        C1: document.getElementById("title") // Cách cũ
+        C2: document.querySelector("") // Cách hiện đại
+
+        - querySelector -> chỉ lấy 1
+        - querySelectorAll -> lấy toàn bộ
+
+    innerHTML:
+        - parse chuỗi -> html
+        - tạo element mới
+
+    Attribute: 
+        Thuộc tính của element
+
+        Phương thức
+            setAttribute("tên_thuộc_tính", "giá_trị")
+            removeAttribute("tên_thuộc_tính")
+
+    Style
+        cho phép thay đổi css trực tiếp bằng js
+        camelCase
+        inline css
+-->
+
+<!-- 
+    C1: hello -> hello world
+    C2: - Lấy tất cả thẻ li
+        - In ra nội dung tùng item bằng console.log
+
+    C3: - Lấy tất cả thẻ li
+        - Thẻ có vị trí là số lẻ -> color: green
+        - Thẻ có vị trí là số chẵn -> color: red
+    -->
+
+<body>
+    <!-- <div>
+        <h1 id="title" class="text green red">Hello</h1>
+        <a href="">Link</a>
+    </div>
+
+    <h2 id="title" class="text">Hêllo</h2>
+
+    <h1>h1</h1>
+
+    <div id="navbar">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Products</a>
+        <a href="">Contact</a>
+        <a href="">Blog</a>
+        <a href="">FAG</a>
+    </div> -->
+
+    <!-- <p id="title">Hello</p> -->
+
+    <ul id="list">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+        <li>item 6</li>
+        <li>item 7</li>
+        <li>item 8</li>
+        <li>item 9</li>
+        <li>item 10</li>
+    </ul>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
