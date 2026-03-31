@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buổi 8: DOM</title>
 
-    <!-- <style>
-        /* div a:nth-of-type(4) {
-            color: red;
-        } */
-    </style> -->
+    <style>
+        .turnOnLight {
+            color: yellow;
+        }
+    </style>
 </head>
 
 <!-- 
     DOM: (Document Object Modal): là một cấu trúc dữ liệu dạng cây do trình duyệt tạo ra từ HTML
-    Mỗi thẻ HTML được chuyển thành 1 object trong bộ bộ của trình duyệt để Javascript có thể thao tác được
+    Mỗi thẻ HTML được chuyển thành 1 object trong bộ nhớ của trình duyệt để Javascript có thể thao tác được
 
     Cách hoạt động:
      - Trình duyệt đọc file HTML
@@ -24,7 +24,7 @@
      - Javacsript truy cập và thay đổi DOM
      - Trình duyệt render lại giao diện
 
-     Mẫu DOM của thẻ h1
+    Mẫu DOM của thẻ h1
     {
         tag: "h1",
         id: "title",
@@ -59,17 +59,19 @@
             + tag -> 
 
     Cú pháp:
-        C1: document.getElementById("title") // Cách cũ
-        C2: document.querySelector("") // Cách hiện đại
+        C1: document.getElementById("title")  // Cách cũ
+        C2: document.querySelector("")        // Cách hiện đại
 
         - querySelector -> chỉ lấy 1
         - querySelectorAll -> lấy toàn bộ
 
-    innerHTML:
+    innerText 
+    textContent
+    innerHTML
         - parse chuỗi -> html
         - tạo element mới
 
-    Attribute: 
+    Attribute:
         Thuộc tính của element
 
         Phương thức
@@ -80,6 +82,34 @@
         cho phép thay đổi css trực tiếp bằng js
         camelCase
         inline css
+
+    ClassName
+        Phương thức:
+            element.className = "giá_trị" => replace giá trị cũ bằng giá trị mới
+            elemet.classList
+                Method (phương thức):
+                    - add: thêm class
+                    - remove: xóa class
+                    - toogle: bật/tắt class
+                    - contains: kiểm tra class
+    
+    Tạo element: tạo 1 node mới trong memory
+    Thêm vào DOM:
+        appendChild: thêm element vào vị trí cuối cùng của cây dom
+        prepend: thêm element và dầu cây dom
+    Xóa element: .remove()
+
+    Event (sự kiện):
+        Hành dộng xảy ra trên trang web
+
+        Cách hoạt động:
+            1. User thao tác 
+            2. Browser tạo event
+            3. Js xử lý 
+
+    Event Listener
+        Lắng nghe event và chạy code
+        
 -->
 
 <!-- 
@@ -113,8 +143,8 @@
 
     <!-- <p id="title">Hello</p> -->
 
-    <ul id="list">
-        <li>item 1</li>
+    <!-- <ul id="list" class="">
+        <li class="text-green text-red font-bold">item 1</li>
         <li>item 2</li>
         <li>item 3</li>
         <li>item 4</li>
@@ -124,7 +154,12 @@
         <li>item 8</li>
         <li>item 9</li>
         <li>item 10</li>
-    </ul>
+    </ul> -->
+    <!-- <span>0</span>
+
+    <button id="btn">Click</button> -->
+    <input type="text" name="email" id="email">
+    <button id="btn">Gửi</button>
 
     <script src="./script.js"></script>
 </body>
