@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buổi 10: Ôn tập DOM</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .container:first-child {
+            margin-bottom: 20px;
+        }
+
+        .box {
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+        .bg-green {
+            background: green;
+            color: white;
+        }
+
+        .bg-blue {
+            background: blue;
+            color: white;
+        }
+
+        .bg-aqua {
+            background: aqua;
+            color: white;
+        }
+
+        .bg-red {
+            background: red;
+            color: white;
+        }
+
+        .bg-yellow {
+            background: yellow;
+            color: white;
+        }
+
+        .bg-pink {
+            background: pink;
+            color: white;
+        } */
+
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .success {
+            text-decoration: line-through;
+        }
+
+        .btnDel {
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        li {
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="container">
+        <div class="box" id="green">Màu xanh lá</div>
+        <div class="box" id="blue">Màu xanh nước biển</div>
+        <div class="box" id="aqua">Màu xanh đại dương</div>
+        <div class="box" id="red">Màu đỏ</div>
+        <div class="box" id="yellow">Màu vàng</div>
+        <div class="box" id="pink">Màu hồng</div>
+    </div>
+
+    <p>Số lượng ô đang được chọn: <span id="selectedLength">0</span></p>
+
+    <div class="container">
+        <button id="selectAll">Chọn tất cả</button>
+        <button id="unSelectAll">Bỏ chọn tất cả</button>
+    </div> -->
+
+    <form id="form">
+        <input type="text" name="task" id="task">
+        <button>Gui</button>
+    </form>
+
+    <div>
+        <button id="all">Tất cả</button>
+        <button id="undo">Chưa xong</button>
+        <button id="compl">Hoàn thành</button>
+    </div>
+
+    <ul id="tasks"></ul>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+<!-- <li>Nấu ăn</li> -->

@@ -1,0 +1,141 @@
+// ================== Bai 1 ====================
+// const boxs = document.querySelectorAll(".box")
+// const selectedLenth = document.querySelector("#selectedLength")
+// const selectAll = document.querySelector("#selectAll")
+// const unSelectAll = document.querySelector("#unSelectAll")
+
+// let selected = []
+
+// function updateCount(color) {
+//     const isCheck = selected.includes(color)
+
+//     if (isCheck) {
+//         const newSelected = selected.filter(item => item !== color)
+//         selected = newSelected
+//     } else {
+//         selected.push(color)
+//     }
+
+//     selectedLenth.textContent = selected.length
+// }
+
+// boxs.forEach(function (item) {
+//     item.addEventListener('click', function () {
+//         item.classList.toggle(`bg-${item.id}`)
+//         updateCount(item.id)
+//     })
+// })
+
+// selectAll.addEventListener('click', function () {
+//     selected = [];
+//     boxs.forEach(function (item) {
+//         item.className = `box bg-${item.id}`
+//         updateCount(item.id)
+//     })
+// })
+
+// unSelectAll.addEventListener('click', function (item) {
+//     selected = []
+
+//     boxs.forEach(function (item) {
+//         item.className = `box`
+//     })
+
+//     selectedLenth.textContent = selected.length
+// })
+
+// ================== Bai 2 ====================
+const form = document.querySelector("#form")
+const input = document.querySelector("#task")
+
+const btnAll = document.querySelector("#all")
+const btnUndo = document.querySelector("#undo")
+const btnCompl = document.querySelector("#compl")
+
+const list = document.querySelector("#tasks")
+
+let taskValue = ''
+
+function updateListTask(task) {
+    const li = document.createElement("li")
+    const span = document.createElement('span')
+    const btnDel = document.createElement('button')
+
+    span.textContent = task
+    li.classList.add('task')
+
+    btnDel.setAttribute('id', "btnDel")
+    btnDel.textContent = "Xóa"
+
+    li.appendChild(span)
+    li.appendChild(btnDel)
+
+    li.addEventListener('click', function () {
+        li.classList.add("success")
+    })
+
+    btnDel.addEventListener('click', function () {
+        li.remove()
+    })
+
+    list.appendChild(li)
+}
+
+input.addEventListener('input', function (e) {
+    taskValue = e.target.value
+})
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault()
+
+    if (taskValue.trim() === "") return
+
+    updateListTask(taskValue)
+
+    input.value = ""
+    input.focus()
+})
+
+btnAll.addEventListener('click', function () {
+    const tasks = document.querySelectorAll(".task")
+    console.log(tasks)
+    tasks.forEach(function (item) {
+        item.style.display = "flex"
+    })
+})
+
+btnUndo.addEventListener('click', function () {
+    const tasks = document.querySelectorAll(".task")
+    console.log(tasks)
+    tasks.forEach(function (item) {
+        const isSuccess = item.classList.contains("success")
+
+        if (isSuccess) {
+            item.style.display = "none"
+        } else {
+            item.style.display = "flex"
+        }
+    })
+})
+
+btnCompl.addEventListener('click', function () {
+    const tasks = document.querySelectorAll(".task")
+    console.log(tasks)
+    tasks.forEach(function (item) {
+        const isSuccess = item.classList.contains("success")
+
+        if (!isSuccess) {
+            item.style.display = "none"
+        } else {
+            item.style.display = "flex"
+        }
+    })
+})
+
+/**
+ {
+    task: "",
+    status: "succes" | "normal"
+ }
+ */
+
