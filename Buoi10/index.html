@@ -58,19 +58,18 @@
             color: white;
         } */
 
-        body {
+        /* body {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .success {
+        .success span {
             text-decoration: line-through;
         }
 
         .btnDel {
             margin-left: 10px;
-            text-decoration: none;
         }
 
         li {
@@ -78,11 +77,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
+        } */
     </style>
 </head>
 
 <body>
+    <!-- // ================== Bai 1 ==================== -->
     <!-- <div class="container">
         <div class="box" id="green">Màu xanh lá</div>
         <div class="box" id="blue">Màu xanh nước biển</div>
@@ -99,7 +99,8 @@
         <button id="unSelectAll">Bỏ chọn tất cả</button>
     </div> -->
 
-    <form id="form">
+    <!-- // ================== Bai 2 ==================== -->
+    <!-- <form id="form">
         <input type="text" name="task" id="task">
         <button>Gui</button>
     </form>
@@ -110,7 +111,17 @@
         <button id="compl">Hoàn thành</button>
     </div>
 
-    <ul id="tasks"></ul>
+    <ul id="tasks"></ul> -->
+
+    <!-- // ================== Bai 3 ==================== -->
+    <form id="form">
+        <input type="text" id="city" name="city">
+        <p>Tìm thấy: <span id="count">0</span> Thành phố</p>
+    </form>
+
+    <ul id="list">
+
+    </ul>
 
     <script src="script.js"></script>
 </body>

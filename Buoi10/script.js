@@ -45,92 +45,90 @@
 // })
 
 // ================== Bai 2 ====================
-const form = document.querySelector("#form")
-const input = document.querySelector("#task")
+// const form = document.querySelector("#form")
+// const input = document.querySelector("#task")
 
-const btnAll = document.querySelector("#all")
-const btnUndo = document.querySelector("#undo")
-const btnCompl = document.querySelector("#compl")
+// const btnAll = document.querySelector("#all")
+// const btnUndo = document.querySelector("#undo")
+// const btnCompl = document.querySelector("#compl")
 
-const list = document.querySelector("#tasks")
+// const list = document.querySelector("#tasks")
 
-let taskValue = ''
+// let taskValue = ''
 
-function updateListTask(task) {
-    const li = document.createElement("li")
-    const span = document.createElement('span')
-    const btnDel = document.createElement('button')
+// function updateListTask(task) {
+//     const li = document.createElement("li")
+//     const span = document.createElement('span')
+//     const btnDel = document.createElement('button')
 
-    span.textContent = task
-    li.classList.add('task')
+//     span.textContent = task
+//     li.classList.add('task')
 
-    btnDel.setAttribute('id', "btnDel")
-    btnDel.textContent = "Xóa"
+//     btnDel.setAttribute('class', "btnDel")
+//     btnDel.textContent = "Xóa"
 
-    li.appendChild(span)
-    li.appendChild(btnDel)
+//     li.appendChild(span)
+//     li.appendChild(btnDel)
 
-    li.addEventListener('click', function () {
-        li.classList.add("success")
-    })
+//     li.addEventListener('click', function () {
+//         li.classList.add("success")
+//     })
 
-    btnDel.addEventListener('click', function () {
-        li.remove()
-    })
+//     btnDel.addEventListener('click', function () {
+//         li.remove()
+//     })
 
-    list.appendChild(li)
-}
+//     list.appendChild(li)
+// }
 
-input.addEventListener('input', function (e) {
-    taskValue = e.target.value
-})
+// input.addEventListener('input', function (e) {
+//     taskValue = e.target.value
+// })
 
-form.addEventListener('submit', function (e) {
-    e.preventDefault()
+// form.addEventListener('submit', function (e) {
+//     e.preventDefault()
 
-    if (taskValue.trim() === "") return
+//     if (taskValue.trim() === "") return
 
-    updateListTask(taskValue)
+//     updateListTask(taskValue)
 
-    input.value = ""
-    input.focus()
-})
+//     input.value = ""
+//     input.focus()
+// })
 
-btnAll.addEventListener('click', function () {
-    const tasks = document.querySelectorAll(".task")
-    console.log(tasks)
-    tasks.forEach(function (item) {
-        item.style.display = "flex"
-    })
-})
+// btnAll.addEventListener('click', function () {
+//     const tasks = document.querySelectorAll(".task")
+//     console.log(tasks)
+//     tasks.forEach(function (item) {
+//         item.style.display = "flex"
+//     })
+// })
 
-btnUndo.addEventListener('click', function () {
-    const tasks = document.querySelectorAll(".task")
-    console.log(tasks)
-    tasks.forEach(function (item) {
-        const isSuccess = item.classList.contains("success")
+// btnUndo.addEventListener('click', function () {
+//     const tasks = document.querySelectorAll(".task")
+//     tasks.forEach(function (item) {
+//         const isSuccess = item.classList.contains("success")
 
-        if (isSuccess) {
-            item.style.display = "none"
-        } else {
-            item.style.display = "flex"
-        }
-    })
-})
+//         if (isSuccess) {
+//             item.style.display = "none"
+//         } else {
+//             item.style.display = "flex"
+//         }
+//     })
+// })
 
-btnCompl.addEventListener('click', function () {
-    const tasks = document.querySelectorAll(".task")
-    console.log(tasks)
-    tasks.forEach(function (item) {
-        const isSuccess = item.classList.contains("success")
+// btnCompl.addEventListener('click', function () {
+//     const tasks = document.querySelectorAll(".task")
+//     tasks.forEach(function (item) {
+//         const isSuccess = item.classList.contains("success")
 
-        if (!isSuccess) {
-            item.style.display = "none"
-        } else {
-            item.style.display = "flex"
-        }
-    })
-})
+//         if (!isSuccess) {
+//             item.style.display = "none"
+//         } else {
+//             item.style.display = "flex"
+//         }
+//     })
+// })
 
 /**
  {
@@ -139,3 +137,40 @@ btnCompl.addEventListener('click', function () {
  }
  */
 
+// ================== Bai 3 ====================
+const cities = [
+    "Hà Nội", "Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Cần Thơ",
+    "Huế", "Nha Trang", "Vũng Tàu", "Đà Lạt", "Biên Hòa",
+    "Bình Dương", "Long An", "Quảng Ninh", "Nam Định", "Thái Bình"
+]
+
+const form = document.getElementById("form")
+const input = document.getElementById("city")
+const count = document.getElementById("count")
+const list = document.getElementById("list")
+
+input.addEventListener('input', (e) => {
+    const value = e.target.value.trim()
+
+    list.textContent = ""
+    count.textContent = 0
+
+    if (!value) return
+
+    for (let city of cities) {
+        const checkChar = city.search(`${value}`)
+
+        if (checkChar == -1) continue
+
+        const li = document.createElement('li')
+        let character = city.replace(value, `<mark>${value}</mark>`)
+
+        li.innerHTML = character
+
+        list.appendChild(li)
+    }
+
+    const li = document.getElementsByTagName('li')
+
+    count.textContent = li.length
+})
