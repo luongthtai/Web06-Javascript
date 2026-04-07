@@ -138,39 +138,76 @@
  */
 
 // ================== Bai 3 ====================
-const cities = [
-    "Hà Nội", "Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Cần Thơ",
-    "Huế", "Nha Trang", "Vũng Tàu", "Đà Lạt", "Biên Hòa",
-    "Bình Dương", "Long An", "Quảng Ninh", "Nam Định", "Thái Bình"
-]
+// const cities = [
+//     "Hà Nội", "Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Cần Thơ",
+//     "Huế", "Nha Trang", "Vũng Tàu", "Đà Lạt", "Biên Hòa",
+//     "Bình Dương", "Long An", "Quảng Ninh", "Nam Định", "Thái Bình"
+// ]
 
+// const form = document.getElementById("form")
+// const input = document.getElementById("city")
+// const count = document.getElementById("count")
+// const list = document.getElementById("list")
+
+// input.addEventListener('input', (e) => {
+//     const value = e.target.value.trim()
+
+//     list.textContent = ""
+//     count.textContent = 0
+
+//     if (!value) return
+
+//     for (let city of cities) {
+//         const checkChar = city.search(`${value}`)
+
+//         if (checkChar == -1) continue
+
+//         const li = document.createElement('li')
+//         let character = city.replace(value, `<mark>${value}</mark>`)
+
+//         li.innerHTML = character
+
+//         list.appendChild(li)
+//     }
+
+//     const li = document.getElementsByTagName('li')
+
+//     count.textContent = li.length
+// })
+
+// ================== Bai 4 ====================
 const form = document.getElementById("form")
-const input = document.getElementById("city")
-const count = document.getElementById("count")
-const list = document.getElementById("list")
 
-input.addEventListener('input', (e) => {
-    const value = e.target.value.trim()
+const emailError = document.getElementById("emailError")
+const passwordError = document.getElementById("passwordError")
+const cfPasError = document.getElementById("cfPasError")
 
-    list.textContent = ""
-    count.textContent = 0
+let formdata = {
+    email: "",
+    password: "",
+    confirmPassword: ""
+}
 
-    if (!value) return
-
-    for (let city of cities) {
-        const checkChar = city.search(`${value}`)
-
-        if (checkChar == -1) continue
-
-        const li = document.createElement('li')
-        let character = city.replace(value, `<mark>${value}</mark>`)
-
-        li.innerHTML = character
-
-        list.appendChild(li)
+form.addEventListener('input', (e) => {
+    formdata = {
+        ...formdata,
+        [e.target.name]: e.target.value
     }
 
-    const li = document.getElementsByTagName('li')
+    emailError.textContent = ""
+    passwordError.textContent = ""
+    cfPasError.textContent = ""
 
-    count.textContent = li.length
+    // validate
+    if (formdata.password.length < 8) passwordError.textContent = "Mật khẩu phải có ít nhất 8 kí tự"
+    if (formdata.password !== formdata.confirmPassword) cfPasError.textContent = "Không khớp"
+})
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const isError = emailError.textContent === "" && passwordError.textContent === "" && cfPasError.textContent === ""
+    const isEmpty = formdata.email && formdata.password && formdata.confirmPassword
+
+    if (isEmpty && isError) console.log(formdata)
 })
