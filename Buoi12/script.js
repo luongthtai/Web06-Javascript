@@ -55,7 +55,7 @@
 
 // const statusCallApi = document.getElementById("content")
 
-// const user = await fetch('https://randomuser.me/api/')
+// fetch('https://randomuser.me/api/')
 //     .then((res) => res.json())
 //     .then((data) => data.results)
 //     .finally(() => {
@@ -93,3 +93,157 @@
 // ])
 
 // console.log(user)
+
+// alert("Hello world")
+
+// console.log("Log")
+
+// const user = new Promise((resolve, reject) => {
+//     resolve({
+//         status: "success"
+//     })
+// })
+
+// user
+//     .then(res => console.log("success: ", res))
+//     .catch(error => console.log("error ", error))
+
+// Async/Await
+const loading = document.getElementById("status")
+// const body = document.getElementsByTagName("body")[0]
+
+// function renderUi(posts) {
+//     posts.forEach(item => {
+//         const div = document.createElement("div")
+//         const h3 = document.createElement("h3")
+//         const p = document.createElement("p")
+
+//         h3.textContent = item.title
+//         p.textContent = item.body
+
+//         div.appendChild(h3)
+//         div.appendChild(p)
+
+//         body.appendChild(div)
+//     })
+// }
+
+// async function getData() {
+//     try {
+//         const res = await fetch('https://jsonplaceholder.typicode.com/posts') // GET
+//         const posts = await res.json()
+
+//         loading.remove()
+//         renderUi(posts)
+//     } catch (error) {
+//         console.log(error)
+//         loading.textContent = "Lỗi khi lấy dữ liệu từ Server"
+//     }
+// }
+
+// // getData()
+// const data = {
+//     email: "test@gmail.com",
+//     password: "123456"
+// }
+
+// fetch('https://jsonplaceholder.typicode.com/posts', {
+//     method: "POST",
+//     body: JSON.stringify(data),
+//     // headers: {
+
+//     // },
+// })
+// const ul = document.querySelector(".list");
+
+// function add(users) {
+//     users.forEach(user => {
+//         const li = document.createElement("li");
+//         const name = document.createElement("p");
+//         const email = document.createElement("p");
+//         name.innerHTML = user.name;
+//         email.innerHTML = user.email;
+//         li.appendChild(name);
+//         li.appendChild(email);
+//         ul.appendChild(li);
+//     });
+// }
+
+// const render = async () => {
+//     try {
+//         const response = await fetch("https://jsonplaceholder.typicode.com/users")
+//         const users = await response.json();
+//         add(users);
+//         loading.remove()
+//     } catch (error) {
+//         console.error("Lỗi khi lấy dữ liệu:", error);
+//     }
+// }
+
+// render();
+
+const username = document.getElementById("username")
+const email = document.getElementById("email")
+
+const list = document.getElementById("list")
+
+const targetUser = 7
+
+const getUser = async (userId) => {
+    try {
+        loading.textContent = 'Loading user ...'
+        const res = await fetch('https://jsonplaceholder.typicode.com/users')
+        const users = await res.json()
+
+        const user = users.find(item => item.id === userId)
+
+        username.textContent = user.username
+        email.textContent = user.email
+
+        loading.remove()
+    } catch (error) {
+        console.log("Error user: ", error)
+        loading.textContent = "Lấy dữ liệu user thất bại"
+    }
+}
+
+const getPostByUser = async (userId) => {
+    try {
+        loading.textContent = "Loading posts ..."
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+        const posts = await res.json()
+
+        const postsByUser = posts.filter(item => item.userId === userId)
+
+        const p = document.createElement("p")
+        p.textContent = `Số bài đăng là: ${postsByUser.length}`
+
+        list.prepend(p)
+
+        postsByUser.forEach(item => {
+            const li = document.createElement("li")
+            const h3 = document.createElement("h3")
+            const p = document.createElement("p")
+
+            h3.textContent = item.title
+            p.textContent = item.body
+
+            li.appendChild(h3)
+            li.appendChild(p)
+
+            list.appendChild(li)
+        })
+
+        loading.remove()
+    } catch (error) {
+        console.log("Error post: ", error)
+        loading.textContent = "Lấy dữ liệu bài post thất bại"
+    }
+}
+
+const render = (userId) => {
+    getUser(userId)
+    getPostByUser(userId)
+}
+
+render(targetUser)
